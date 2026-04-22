@@ -26,12 +26,12 @@ This environment was developed and tested on <i>Ubuntu 24.04.4 LTS (Noble Numbat
 ### Setting Up the Environment
 
 <p align="justify">
-Clone the repository and navigate to the root folder (that contains the <code>docker-compose.yml</code> file). Replace the path with the actual location.
+Clone the repository and navigate to the root folder (that contains the <code>docker-compose.yml</code> file).
 </p>
 
 ```bash
 git clone https://github.com/Slamurais/PuzzlebotAutonomousChallenge.git
-cd /path/to/PuzzlebotAutonomousChallenge
+cd PuzzlebotAutonomousChallenge
 ```
 
 ### Building and Starting the Container
