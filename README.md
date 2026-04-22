@@ -26,7 +26,7 @@ This environment was developed and tested on <i>Ubuntu 24.04.4 LTS (Noble Numbat
 ### Setting Up the Environment
 
 <p align="justify">
-Clone the repository and navigate to the folder that contains the <code>docker-compose.yml</code> file. Replace the path with your actual location.
+Clone the repository and navigate to the root folder (that contains the <code>docker-compose.yml</code> file). Replace the path with the actual location.
 </p>
 
 ```bash
@@ -51,11 +51,11 @@ To open an interactive bash shell inside the running container, use the exec com
 </p>
 
 ```bash
-docker exec -it puzzlebot_container bash
+docker compose exec puzzlebot_container bash
 ```
 
 <p align="justify">
-Your prompt will change to <code>root@...</code> indicating you are inside the container. Your default working directory is <code>/root/PuzzlebotAutonomousChallenge/ros2_ws</code>.
+Your prompt will change to <code>root@...</code> indicating you are inside the container. Your default working directory is <code>/root/PuzzlebotAutonomousChallenge/ros2_ws</code>. When you are finished working inside the container and want to return to your host terminal type <code>exit</code> and press <code>Enter</code>.
 </p>
 
 ### Working with ROS 2 Workspace
@@ -89,4 +89,34 @@ source install/setup.bash
 
 ```bash
 ros2 launch package launch_file.launch.py
+```
+
+### Managing the Container Lifecycle
+
+<p align="justify">
+Once your environment is set up, you can manage the state of the container using the following commands from the root of the repository.
+</p>
+
+#### Stopping and Starting
+
+<p align="justify">
+Use stop to pause the container without removing it. You can resume later with start.
+</p>
+
+```bash
+docker compose stop
+```
+
+```bash
+docker compose start
+```
+
+#### Deep Clean
+
+<p align="justify">
+This stops and deletes the container. This is recommended if you make changes to the <code>docker-compose.yml</code> or need to reset the environment completely.
+</p>
+
+```bash
+docker compose down
 ```
