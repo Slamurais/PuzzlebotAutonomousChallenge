@@ -1,5 +1,5 @@
 services:
-  puzzlebot_dev:
+  puzzlebot_container:
     build: .
     image: slamurais_puzzlebot_image:latest
     container_name: puzzlebot_container
