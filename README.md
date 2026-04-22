@@ -76,7 +76,7 @@ source /opt/ros/humble/setup.bash
 
 ```bash
 cd /root/PuzzlebotAutonomousChallenge/ros2_ws
-colcon build
+colcon build --symlink-install
 ```
 
 * Source the workspace overlay:
