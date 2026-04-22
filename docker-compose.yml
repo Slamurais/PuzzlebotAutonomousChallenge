@@ -1,0 +1,10 @@
+services:
+  puzzlebot_dev:
+    build: .
+    image: slamurais_puzzlebot_image:latest
+    container_name: puzzlebot_container
+    volumes:
+      - .:/root/PuzzlebotAutonomousChallenge
+    network_mode: host
+    stdin_open: true
+    tty: true
