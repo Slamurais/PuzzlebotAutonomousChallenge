@@ -1,0 +1,92 @@
+# Puzzlebot Autonomous Challenge
+
+<p align="justify">
+Main project developed in collaboration with Manchester Robotics and E80 Group, as part of the undergraduate course <i>"Integration of Robotics and Intelligent Systems."</i>
+</p>
+
+<p align="justify">This repository provides the <strong>ROS 2 Humble workspace for Puzzlebot</strong>, an educational differential-drive mobile robot developed by Manchester Robotics.</p>
+
+## Using Docker with Puzzlebot
+
+<p align="justify">
+This guide explains how to set up and manage the Puzzlebot development environment using Docker. This setup ensures a consistent ROS 2 Humble environment across different host systems.
+</p>
+
+### Prerequisites
+
+<p align="justify">
+This environment was developed and tested on <i>Ubuntu 24.04.4 LTS (Noble Numbat)</i>. Before proceeding, ensure you have <i>Docker</i> and the <i>Docker Compose</i> plugin installed.
+</p>
+
+#### Official Install Guides:
+
+* *Docker*: https://docs.docker.com/engine/install/ubuntu/
+* *Docker Compose*: https://docs.docker.com/compose/install/linux/
+
+### Setting Up the Environment
+
+<p align="justify">
+Clone the repository and navigate to the folder that contains the <code>docker-compose.yml</code> file. Replace the path with your actual location.
+</p>
+
+```bash
+git clone https://github.com/Slamurais/PuzzlebotAutonomousChallenge.git
+cd /path/to/PuzzlebotAutonomousChallenge
+```
+
+### Building and Starting the Container
+
+<p align="justify">
+Build the Docker image using Docker Compose (this may take several minutes the first time) and start the container in detached mode to run it in the background.
+</p>
+
+```bash
+docker compose up -d --build
+```
+
+### Accessing the Container
+
+<p align="justify">
+To open an interactive bash shell inside the running container, use the exec command:
+</p>
+
+```bash
+docker exec -it puzzlebot_container bash
+```
+
+<p align="justify">
+Your prompt will change to <code>root@...</code> indicating you are inside the container. Your default working directory is <code>/root/PuzzlebotAutonomousChallenge/ros2_ws</code>.
+</p>
+
+### Working with ROS 2 Workspace
+
+<p align="justify">
+The entire <code>PuzzlebotAutonomousChallenge</code> folder from your host is mounted at <code>/root/PuzzlebotAutonomousChallenge</code>. Any changes made to the source files on your host are immediately visible inside the container, and vice versa.
+</p>
+
+#### Typical ROS 2 workflow inside the container:
+
+* Source the ROS 2 environment (this was added to <code>~/.bashrc</code>, but can be done manually):
+
+```bash
+source /opt/ros/humble/setup.bash
+```
+
+* Build your workspace:
+
+```bash
+cd /root/PuzzlebotAutonomousChallenge/ros2_ws
+colcon build
+```
+
+* Source the workspace overlay:
+
+```bash
+source install/setup.bash
+```
+
+* Run a launch file:
+
+```bash
+ros2 launch package launch_file.launch.py
+```
