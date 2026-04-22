@@ -23,4 +23,13 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+find_package(rosidl_default_generators REQUIRED)
+find_package(std_msgs REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/ObjectDetectionYoloInferenceResult.msg"
+  "msg/ObjectDetectionYoloInference.msg"
+  DEPENDENCIES std_msgs
+)
+
 ament_package()

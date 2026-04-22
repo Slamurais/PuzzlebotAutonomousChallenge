@@ -6,5 +6,7 @@ services:
     volumes:
       - .:/root/PuzzlebotAutonomousChallenge
     network_mode: host
+    devices:
+      - "/dev/video0:/dev/video0"
     stdin_open: true
     tty: true

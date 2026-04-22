@@ -120,3 +120,13 @@ This stops and deletes the container. This is recommended if you make changes to
 ```bash
 docker compose down
 ```
+
+#### Applying Configuration Changes Fast (No Rebuild)
+
+<p align="justify">
+If you make changes to the <code>docker-compose.yml</code> file but have <strong>not</strong> changed the <code>Dockerfile</code>, you do not need to wait for a full rebuild. Simply run:
+</p>
+
+```bash
+docker compose up -d
+```

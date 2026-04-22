@@ -23,4 +23,14 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+# Install Python nodes
+install(PROGRAMS python_nodes/object_detection_yolo.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install YOLO models so get_package_share_directory can find them
+install(DIRECTORY yolo_models
+  DESTINATION share/${PROJECT_NAME}
+)
+
 ament_package()
