@@ -213,6 +213,10 @@ Look for the <code>Import from file</code> option. Select the corresponding JSON
 
 ### puzzlebot_hardware
 
+<ul>
+  <li><p align="justify"><strong>camera_calibration.py</strong> </p></li>
+</ul>
+
 ### puzzlebot_perception
 
 <ul>
@@ -224,6 +228,38 @@ Look for the <code>Import from file</code> option. Select the corresponding JSON
 ros2 launch puzzlebot_bringup object_detection_yolo.launch.py 
 ```
 
+<ul>
+  <li><p align="justify"><strong>aruco_detection.py</strong> </p></li>
+</ul>
+
+<ul>
+  <li><p align="justify"><strong>slam.py</strong> </p></li>
+</ul>
+
+<ul>
+  <li><p align="justify"><strong>voice_recognition.py</strong> </p></li>
+</ul>
+
 ### puzzlebot_navigation
 
+<ul>
+  <li><p align="justify"><strong>path_planner.py</strong> </p></li>
+</ul>
+
+<ul>
+  <li><p align="justify"><strong>obstacle_avoidance.py</strong> </p></li>
+</ul>
+
 ### puzzlebot_control
+
+<ul>
+  <li><p align="justify"><strong>pid_controller.py</strong> </p></li>
+</ul>
+
+<ul>
+  <li><p align="justify"><strong>robot_alignment.py</strong> </p></li>
+</ul>
+
+<ul>
+  <li><p align="justify"><strong>state_machine.py</strong> </p></li>
+</ul>
