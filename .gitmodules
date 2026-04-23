@@ -1,0 +1,12 @@
+[submodule "ros2_ws/src/puzzlebot_hardware"]
+	path = ros2_ws/src/puzzlebot_hardware
+	url = https://github.com/Slamurais/puzzlebot_hardware.git
+[submodule "ros2_ws/src/puzzlebot_perception"]
+	path = ros2_ws/src/puzzlebot_perception
+	url = https://github.com/Slamurais/puzzlebot_perception.git
+[submodule "ros2_ws/src/puzzlebot_navigation"]
+	path = ros2_ws/src/puzzlebot_navigation
+	url = https://github.com/Slamurais/puzzlebot_navigation.git
+[submodule "ros2_ws/src/puzzlebot_control"]
+	path = ros2_ws/src/puzzlebot_control
+	url = https://github.com/Slamurais/puzzlebot_control.git
