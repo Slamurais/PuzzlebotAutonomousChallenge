@@ -30,7 +30,7 @@ Clone the repository and navigate to the root folder (that contains the <code>do
 </p>
 
 ```bash
-git clone https://github.com/Slamurais/PuzzlebotAutonomousChallenge.git
+git clone --recurse-submodules https://github.com/Slamurais/PuzzlebotAutonomousChallenge.git
 cd PuzzlebotAutonomousChallenge
 ```
 
