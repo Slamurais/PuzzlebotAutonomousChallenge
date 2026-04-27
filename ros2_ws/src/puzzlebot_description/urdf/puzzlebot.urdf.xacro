@@ -1,43 +1,49 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="puzzlebot">
 
-    <xacro:property name="chassis_m"   value="0.8"/>
-    <xacro:property name="chassis_ixx" value="0.004"/>
-    
-    <xacro:property name="wheel_m"     value="0.05"/>
-    <xacro:property name="wheel_ixx"   value="0.002"/>
+    <xacro:include filename="$(find puzzlebot_description)/urdf/puzzlebot_gazebo.xacro"/>
+    <xacro:include filename="$(find puzzlebot_description)/urdf/puzzlebot_ros2_control.xacro"/>
+   
+    <xacro:property name="base_m"      value="1.2"/>
+    <xacro:property name="base_i"      value="0.001"/>
+
+    <xacro:property name="wheel_m"     value="0.053"/>
+    <xacro:property name="wheel_i"     value="0.001"/>
     <xacro:property name="wheel_rad"   value="0.05"/>
+    <xacro:property name="wheel_x"     value="0.098"/>
+    <xacro:property name="wheel_y"     value="-0.038"/>
 
-    <xacro:property name="cas_rad"     value="0.0075"/>
+    <xacro:property name="caster_m"    value="1.0E-06"/>
+    <xacro:property name="caster_i"    value="1.0E-10"/>
+    <xacro:property name="caster_rad"  value="0.0075"/>
 
-    <xacro:property name="dummy_m"     value="0.001"/>
-    <xacro:property name="dummy_ixx"   value="1.0e-6"/>
+    <xacro:property name="blue_rgba"       value="0.0 0.5 1.0 1.0"/>
+    <xacro:property name="dark_grey_rgba"  value="0.2 0.2 0.2 1.0"/>
 
-    <xacro:macro name="dummy_inertial">
-        <inertial>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="${dummy_m}"/>
-            <inertia ixx="${dummy_ixx}" iyy="${dummy_ixx}" izz="${dummy_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
-        </inertial>
-    </xacro:macro>
-
-    <link name="base_footprint">
-        <xacro:dummy_inertial/>
-    </link>
+    <link name="base_footprint"/>
 
     <link name="base_link">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="${chassis_m}"/>
-            <inertia ixx="${chassis_ixx}" iyy="${chassis_ixx}" izz="${chassis_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+            <mass value="${base_m}"/>
+            <inertia ixx="${base_i}" ixy="0.0" ixz="0.0"
+                     iyy="${base_i}" iyz="0.0"
+                     izz="${base_i}"/>
         </inertial>
         <visual>
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-            <geometry><mesh filename="package://puzzlebot_description/meshes/chassis.stl"/></geometry>
+            <geometry>
+                <mesh filename="package://puzzlebot_description/meshes/chassis.stl"/>
+            </geometry>
+            <material name="chassis_color">
+                <color rgba="${blue_rgba}"/>
+            </material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-            <geometry><mesh filename="package://puzzlebot_description/meshes/chassis.stl"/></geometry>
+            <geometry>
+                <mesh filename="package://puzzlebot_description/meshes/chassis.stl"/>
+            </geometry>
         </collision>
     </link>
     
@@ -51,14 +57,24 @@
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="${wheel_m}"/>
-            <inertia ixx="${wheel_ixx}" iyy="${wheel_ixx}" izz="${wheel_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+            <inertia ixx="${wheel_i}" ixy="0.0" ixz="0.0"
+                     iyy="${wheel_i}" iyz="0.0"
+                     izz="${wheel_i}"/>
         </inertial>
         <visual>
             <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
-            <geometry><mesh filename="package://puzzlebot_description/meshes/wheel.stl"/></geometry>
+            <geometry>
+                <mesh filename="package://puzzlebot_description/meshes/wheel.stl"/>
+            </geometry>
+            <material name="wheel_color">
+                <color rgba="${blue_rgba}"/>
+            </material>
         </visual>
         <collision>
-            <geometry><sphere radius="${wheel_rad}"/></geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="${wheel_rad}"/>
+            </geometry>
         </collision>
     </link>
 
@@ -66,21 +82,31 @@
         <parent link="base_link"/>
         <child link="wheel_right_link"/>
         <axis xyz="1 0 0"/>
-        <origin xyz="0.098 -0.038 0" rpy="0 0 0"/>
+        <origin xyz="${wheel_x} ${wheel_y} 0" rpy="0 0 0"/>
     </joint>
 
     <link name="wheel_left_link">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="${wheel_m}"/>
-            <inertia ixx="${wheel_ixx}" iyy="${wheel_ixx}" izz="${wheel_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+            <inertia ixx="${wheel_i}" ixy="0.0" ixz="0.0"
+                     iyy="${wheel_i}" iyz="0.0"
+                     izz="${wheel_i}"/>
         </inertial>
         <visual>
             <origin xyz="0 0 0" rpy="0 1.5708 0"/>
-            <geometry><mesh filename="package://puzzlebot_description/meshes/wheel.stl"/></geometry>
+            <geometry>
+                <mesh filename="package://puzzlebot_description/meshes/wheel.stl"/>
+            </geometry>
+            <material name="wheel_color">
+                <color rgba="${blue_rgba}"/>
+            </material>
         </visual>
         <collision>
-            <geometry><sphere radius="${wheel_rad}"/></geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="${wheel_rad}"/>
+            </geometry>
         </collision>
     </link>
 
@@ -88,29 +114,44 @@
         <parent link="base_link"/>
         <child link="wheel_left_link"/>
         <axis xyz="1 0 0"/>
-        <origin xyz="-0.098 -0.038 0" rpy="0 0 0"/>
+        <origin xyz="-${wheel_x} ${wheel_y} 0" rpy="0 0 0"/>
     </joint>
     
     <link name="caster_link">
-        <xacro:dummy_inertial/>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${caster_m}"/>
+            <inertia ixx="${caster_i}" ixy="0.0" ixz="0.0"
+                     iyy="${caster_i}" iyz="0.0"
+                     izz="${caster_i}"/>
+        </inertial>
         <collision>
-            <geometry><sphere radius="${cas_rad}"/></geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="${caster_rad}"/>
+            </geometry>
         </collision>
     </link>
 
     <joint name="caster_joint" type="fixed">
         <parent link="base_footprint"/>
         <child link="caster_link"/>
-        <origin xyz="0 0.095 0" rpy="0 0 0"/>
+        <origin xyz="0 0.095 0.0081" rpy="0 0 0"/>
     </joint>
 
     <link name="laser_link">
-        <xacro:dummy_inertial/> 
         <visual>
-            <geometry><mesh filename="package://puzzlebot_description/meshes/laser_link.STL"/></geometry>
+            <geometry>
+                <mesh filename="package://puzzlebot_description/meshes/laser_link.stl"/>
+            </geometry>
+            <material name="laser_color">
+                <color rgba="${dark_grey_rgba}"/>
+            </material>
         </visual>
         <collision>
-            <geometry><mesh filename="package://puzzlebot_description/meshes/laser_link.STL"/></geometry>
+            <geometry>
+                <mesh filename="package://puzzlebot_description/meshes/laser_link.stl"/>
+            </geometry>
         </collision>
     </link>
 

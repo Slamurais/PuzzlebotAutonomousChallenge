@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="factory_world">
+    
+    <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics"/>
+    <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands"/>
+    <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster"/>
+    <plugin filename="libignition-gazebo-contact-system.so" name="ignition::gazebo::systems::Contact"/>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="factory_walls">
+      <static>true</static>
+
+      <link name="north_wall">
+        <pose>0 1.841 0.201 0 0 0</pose> 
+        <collision name="north_col">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+        </collision>
+        <visual name="north_vis">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+          <material>
+            <ambient>0.8 0.6 0.4 1</ambient>
+            <diffuse>0.8 0.6 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="south_wall">
+        <pose>0 -1.841 0.201 0 0 0</pose> 
+        <collision name="south_col">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+        </collision>
+        <visual name="south_vis">
+          <geometry><box><size>4.884 0.016 0.402</size></box></geometry>
+          <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="east_wall">
+        <pose>2.434 0 0.201 0 0 0</pose> 
+        <collision name="east_col">
+          <geometry><box><size>0.016 3.666 0.402</size></box></geometry>
+        </collision>
+        <visual name="east_vis">
+          <geometry><box><size>0.016 3.666 0.402</size></box></geometry>
+          <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="west_wall_seg1">
+        <pose>-2.434 -1.6605 0.201 0 0 0</pose>
+        <collision name="ww1_col"><geometry><box><size>0.016 0.345 0.402</size></box></geometry></collision>
+        <visual name="ww1_vis"><geometry><box><size>0.016 0.345 0.402</size></box></geometry>
+        <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_door1_header">
+        <pose>-2.434 -1.308 0.329 0 0 0</pose>
+        <collision name="wd1_col"><geometry><box><size>0.016 0.360 0.146</size></box></geometry></collision>
+        <visual name="wd1_vis"><geometry><box><size>0.016 0.360 0.146</size></box></geometry>
+        <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_wall_seg2">
+        <pose>-2.434 -1.053 0.201 0 0 0</pose>
+        <collision name="ww2_col"><geometry><box><size>0.016 0.150 0.402</size></box></geometry></collision>
+        <visual name="ww2_vis"><geometry><box><size>0.016 0.150 0.402</size></box></geometry>
+        <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_door2_header">
+        <pose>-2.434 -0.795 0.329 0 0 0</pose>
+        <collision name="wd2_col"><geometry><box><size>0.016 0.366 0.146</size></box></geometry></collision>
+        <visual name="wd2_vis"><geometry><box><size>0.016 0.366 0.146</size></box></geometry>
+        <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_wall_seg3">
+        <pose>-2.434 -0.537 0.201 0 0 0</pose>
+        <collision name="ww3_col"><geometry><box><size>0.016 0.150 0.402</size></box></geometry></collision>
+        <visual name="ww3_vis"><geometry><box><size>0.016 0.150 0.402</size></box></geometry>
+        <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_door3_header">
+        <pose>-2.434 -0.282 0.329 0 0 0</pose>
+        <collision name="wd3_col"><geometry><box><size>0.016 0.360 0.146</size></box></geometry></collision>
+        <visual name="wd3_vis"><geometry><box><size>0.016 0.360 0.146</size></box></geometry>
+        <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material></visual>
+      </link>
+
+      <link name="west_wall_seg4">
+        <pose>-2.434 0.8655 0.201 0 0 0</pose>
+        <collision name="ww4_col"><geometry><box><size>0.016 1.935 0.402</size></box></geometry></collision>
+        <visual name="ww4_vis"><geometry><box><size>0.016 1.935 0.402</size></box></geometry>
+        <material><ambient>0.8 0.6 0.4 1</ambient><diffuse>0.8 0.6 0.4 1</diffuse></material></visual>
+      </link>
+
+    </model>
+  </world>
+</sdf>

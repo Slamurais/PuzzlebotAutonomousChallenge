@@ -39,7 +39,7 @@ def generate_launch_description():
         package='rviz2',
         executable='rviz2',
         name='rviz2',
-        arguments=['-d', os.path.join(puzzlebot_description_dir, 'rviz_layouts', 'rviz_display.rviz')]
+        arguments=['-d', os.path.join(puzzlebot_description_dir, 'rviz_config', 'rviz_display.rviz')]
     )
 
     return LaunchDescription([
