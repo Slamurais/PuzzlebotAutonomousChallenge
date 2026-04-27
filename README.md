@@ -188,7 +188,7 @@ The <code>foxglove_layouts/</code> folder contains JSON configuration files for 
 </p>
 
 <p align="justify">
-To keep the system intuitive, layouts follow a 1:1 naming convention with their corresponding launch files. For example, <code>object_detection_yolo.launch.py</code> works specifically with <code>object_detection_yolo.json</code>.
+To keep the system intuitive, layouts follow a 1:1 naming convention with their corresponding launch files. For example, <code>task.launch.py</code> works specifically with <code>task.json</code>.
 </p>
 
 <p align="justify">
@@ -224,8 +224,8 @@ Look for the <code>Import from file</code> option. Select the corresponding JSON
 </ul>
 
 ```bash
-# sim:=true: Use this parameter when working on your host PC to simulate the camera feed using your integrated webcam.
-ros2 launch puzzlebot_bringup object_detection_yolo.launch.py 
+# webcam:=true: Use this parameter when working on your host PC to simulate the camera feed using your integrated webcam.
+ros2 launch puzzlebot_perception object_detection_yolo.launch.py 
 ```
 
 <ul>

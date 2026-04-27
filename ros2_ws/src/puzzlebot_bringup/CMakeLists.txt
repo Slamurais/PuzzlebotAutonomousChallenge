@@ -25,6 +25,7 @@ endif()
 
 install(DIRECTORY
   launch
+  config
   foxglove_layouts
   DESTINATION share/${PROJECT_NAME}
 )

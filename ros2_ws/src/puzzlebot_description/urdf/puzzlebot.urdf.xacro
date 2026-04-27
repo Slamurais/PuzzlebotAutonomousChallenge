@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="puzzlebot">
+
+    <xacro:property name="chassis_m"   value="0.8"/>
+    <xacro:property name="chassis_ixx" value="0.004"/>
+    
+    <xacro:property name="wheel_m"     value="0.05"/>
+    <xacro:property name="wheel_ixx"   value="0.002"/>
+    <xacro:property name="wheel_rad"   value="0.05"/>
+
+    <xacro:property name="cas_rad"     value="0.0075"/>
+
+    <xacro:property name="dummy_m"     value="0.001"/>
+    <xacro:property name="dummy_ixx"   value="1.0e-6"/>
+
+    <xacro:macro name="dummy_inertial">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${dummy_m}"/>
+            <inertia ixx="${dummy_ixx}" iyy="${dummy_ixx}" izz="${dummy_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+        </inertial>
+    </xacro:macro>
+
+    <link name="base_footprint">
+        <xacro:dummy_inertial/>
+    </link>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${chassis_m}"/>
+            <inertia ixx="${chassis_ixx}" iyy="${chassis_ixx}" izz="${chassis_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/chassis.stl"/></geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/chassis.stl"/></geometry>
+        </collision>
+    </link>
+    
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    </joint>
+
+    <link name="wheel_right_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${wheel_m}"/>
+            <inertia ixx="${wheel_ixx}" iyy="${wheel_ixx}" izz="${wheel_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -1.5708 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/wheel.stl"/></geometry>
+        </visual>
+        <collision>
+            <geometry><sphere radius="${wheel_rad}"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_right_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_right_link"/>
+        <axis xyz="1 0 0"/>
+        <origin xyz="0.098 -0.038 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="wheel_left_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="${wheel_m}"/>
+            <inertia ixx="${wheel_ixx}" iyy="${wheel_ixx}" izz="${wheel_ixx}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/wheel.stl"/></geometry>
+        </visual>
+        <collision>
+            <geometry><sphere radius="${wheel_rad}"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="wheel_left_link"/>
+        <axis xyz="1 0 0"/>
+        <origin xyz="-0.098 -0.038 0" rpy="0 0 0"/>
+    </joint>
+    
+    <link name="caster_link">
+        <xacro:dummy_inertial/>
+        <collision>
+            <geometry><sphere radius="${cas_rad}"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="caster_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="caster_link"/>
+        <origin xyz="0 0.095 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="laser_link">
+        <xacro:dummy_inertial/> 
+        <visual>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/laser_link.STL"/></geometry>
+        </visual>
+        <collision>
+            <geometry><mesh filename="package://puzzlebot_description/meshes/laser_link.STL"/></geometry>
+        </collision>
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="laser_link" />
+        <origin xyz="-0.005 -0.002 0.12" rpy="0 0 3.14" />
+    </joint>
+
+</robot>

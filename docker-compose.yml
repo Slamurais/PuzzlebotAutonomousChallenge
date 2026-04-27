@@ -3,10 +3,24 @@ services:
     build: .
     image: slamurais_puzzlebot_image:latest
     container_name: puzzlebot_container
+    
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - LIBGL_ALWAYS_INDIRECT=0   
+      
     volumes:
       - .:/root/PuzzlebotAutonomousChallenge
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      
     network_mode: host
+    
     devices:
       - "/dev/video0:/dev/video0"
+      - "/dev/dri:/dev/dri"
+      
+    group_add:                  
+      - video
+
     stdin_open: true
     tty: true
