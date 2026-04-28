@@ -27,8 +27,10 @@ install(DIRECTORY
   urdf 
   meshes
   worlds
+  models
   launch
   rviz_config
+  gazebo_config
   DESTINATION share/${PROJECT_NAME}
 )
 

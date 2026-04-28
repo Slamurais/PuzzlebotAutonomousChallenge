@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.8">
   <world name="factory_world">
-    
+
     <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics"/>
     <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands"/>
     <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster"/>
@@ -119,5 +119,194 @@
       </link>
 
     </model>
+
+    <model name="storage_rack_1">
+      <static>true</static>
+      <pose>1.0 1.0 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+        </collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_2">
+      <static>true</static>
+      <pose>1.0 0.887 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+        </collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_3">
+      <static>true</static>
+      <pose>0.648 1.0 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+        </collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_4">
+      <static>true</static>
+      <pose>0.648 0.887 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+        </collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_5">
+      <static>true</static>
+      <pose>1.0 -1.0 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry></collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_6">
+      <static>true</static>
+      <pose>1.0 -0.887 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry></collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_7">
+      <static>true</static>
+      <pose>0.648 -1.0 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry></collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_8">
+      <static>true</static>
+      <pose>0.648 -0.887 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry></collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_9">
+      <static>true</static>
+      <pose>0.296 -1.0 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry></collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="storage_rack_10">
+      <static>true</static>
+      <pose>0.296 -0.887 0.0 0 0 0</pose> 
+      <link name="rack_link">
+        <collision name="rack_collision"><geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry></collision>
+        <visual name="rack_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/rack.stl</uri></mesh></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_1">
+      <static>true</static>
+      <pose>1.350 1.83 0.0 0 0 0</pose> 
+      <link name="conveyor_link">
+        <collision name="conveyor_collision"><geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry></collision>
+        <visual name="conveyor_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_2">
+      <static>true</static>
+      <pose>0.998 1.83 0.0 0 0 0</pose> 
+      <link name="conveyor_link">
+        <collision name="conveyor_collision"><geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry></collision>
+        <visual name="conveyor_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_3">
+      <static>true</static>
+      <pose>0.646 1.83 0.0 0 0 0</pose> 
+      <link name="conveyor_link">
+        <collision name="conveyor_collision"><geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry></collision>
+        <visual name="conveyor_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_4">
+      <static>true</static>
+      <pose>0.294 1.83 0.0 0 0 0</pose> 
+      <link name="conveyor_link">
+        <collision name="conveyor_collision"><geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry></collision>
+        <visual name="conveyor_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="conveyor_5">
+      <static>true</static>
+      <pose>-0.058 1.83 0.0 0 0 0</pose> 
+      <link name="conveyor_link">
+        <collision name="conveyor_collision"><geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry></collision>
+        <visual name="conveyor_visual">
+          <geometry><mesh><uri>model://puzzlebot_description/models/conveyor.stl</uri></mesh></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.2 0.2 0.2 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
   </world>
 </sdf>

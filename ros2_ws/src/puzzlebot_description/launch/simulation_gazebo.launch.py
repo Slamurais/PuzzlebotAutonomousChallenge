@@ -16,6 +16,8 @@ def generate_launch_description():
 
     urdf_file = os.path.join(puzzlebot_description_dir, 'urdf', 'puzzlebot.urdf.xacro')
     world_file = os.path.join(puzzlebot_description_dir, 'worlds', 'e80_factory.sdf')
+    
+    gazebo_config_file = os.path.join(puzzlebot_description_dir, 'gazebo_config', 'simulation_gazebo.config')
 
     model_arg = DeclareLaunchArgument(
         name='model',
@@ -39,7 +41,7 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
             PythonLaunchDescriptionSource([os.path.join(ros_gz_sim_dir, 'launch', 'gz_sim.launch.py')]),
             launch_arguments=[
-                ('gz_args', [' -v 4', ' -r ', world_file])
+                ('gz_args', [' -v 4', ' -r ', world_file, ' --gui-config ', gazebo_config_file])
             ]
         )
     
