@@ -30,7 +30,7 @@
     
     <gazebo>
         <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-            <parameters>$(find puzzlebot_control)/config/diff_drive.yaml</parameters>
+            <parameters>$(find puzzlebot_control)/config/simulation_differential_drive.yaml</parameters>
         </plugin>
         
         <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">

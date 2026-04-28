@@ -16,7 +16,6 @@ def generate_launch_description():
 
     urdf_file = os.path.join(puzzlebot_description_dir, 'urdf', 'puzzlebot.urdf.xacro')
     world_file = os.path.join(puzzlebot_description_dir, 'worlds', 'e80_factory.sdf')
-    rviz_config_file = os.path.join(puzzlebot_description_dir, 'rviz_config', 'gazebo_simulation.rviz')
 
     model_arg = DeclareLaunchArgument(
         name='model',
@@ -64,35 +63,11 @@ def generate_launch_description():
         output='screen'
     )
 
-    joint_state_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_state_broadcaster"],
-    )
-
-    diff_drive_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["diff_drive_controller"],
-    )
-
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', rviz_config_file],
-        parameters=[{'use_sim_time': True}]
-    )
-
     return LaunchDescription([
         model_arg,
         robot_state_publisher_node,
         ign_resource_path,
         gazebo,
         gz_spawn_entity,
-        bridge,
-        joint_state_spawner,
-        diff_drive_spawner,
-        rviz_node
+        bridge
     ])
