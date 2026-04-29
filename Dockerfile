@@ -45,6 +45,12 @@ RUN echo "source /root/PuzzlebotAutonomousChallenge/ros2_ws/install/setup.bash" 
 # Note: numpy is pinned to <2.0.0 because ROS 2 Humble cv_bridge crashes with numpy 2.x
 RUN pip3 install "numpy<2.0.0" ultralytics
 
+# Necessary for puzzlebot_control/joystick_teleop node
+RUN apt-get update && apt-get install -y \
+    ros-humble-joy \
+    ros-humble-joy-teleop \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /root/PuzzlebotAutonomousChallenge/ros2_ws
 
 CMD ["bash"]

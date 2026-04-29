@@ -18,6 +18,7 @@ services:
     devices:
       - "/dev/video0:/dev/video0"
       - "/dev/dri:/dev/dri"
+      - "/dev/input:/dev/input"
       
     group_add:                  
       - video

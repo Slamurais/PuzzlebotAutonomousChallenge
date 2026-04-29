@@ -18,6 +18,11 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(os.path.join(pkg_control, 'launch', 'simulation_controller.launch.py'))
     )
 
+    joystick_teleop_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(pkg_control, 'launch', 'joystick_teleop.launch.py')),
+        launch_arguments={'use_sim_time': 'True'}.items()
+    )
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
@@ -30,5 +35,6 @@ def generate_launch_description():
     return LaunchDescription([
         gazebo_launch,
         simulation_controller_launch,
+        joystick_teleop_launch,  
         rviz_node
     ])

@@ -31,6 +31,12 @@
     <gazebo>
         <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
             <parameters>$(find puzzlebot_control)/config/simulation_differential_drive.yaml</parameters>
+            
+            <ros>
+                <remapping>/diff_drive_controller/cmd_vel_unstamped:=/cmd_vel</remapping>
+                <remapping>/diff_drive_controller/odom:=/odom</remapping>
+            </ros>
+            
         </plugin>
         
         <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
