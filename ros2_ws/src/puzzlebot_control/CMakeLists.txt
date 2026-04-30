@@ -23,7 +23,9 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(PROGRAMS python_nodes/odometry.py
+install(PROGRAMS 
+  python_nodes/odometry.py
+  python_nodes/pid_differential_pose_controller.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

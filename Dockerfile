@@ -41,9 +41,17 @@ RUN echo "source /root/PuzzlebotAutonomousChallenge/ros2_ws/install/setup.bash" 
 # Format: # Necessary for <package_name>/<node_name> node
 # ==============================================================================
 
-# Necessary for puzzlebot_perception/object_detection_yolo node
-# Note: numpy is pinned to <2.0.0 because ROS 2 Humble cv_bridge crashes with numpy 2.x
-RUN pip3 install "numpy<2.0.0" ultralytics
+# Necessary for puzzlebot_control/pid_differential_pose_controller
+# NOTE: This installs the ROS wrapper, but unfortunately pulls a broken, outdated 
+# python3-transforms3d apt package with it. We override it with pip below.
+RUN apt-get update && apt-get install -y \
+    ros-humble-tf-transformations \
+    && rm -rf /var/lib/apt/lists/*
+
+# Necessary for puzzlebot_perception/object_detection_yolo node AND puzzlebot_control
+# Note 1: numpy is pinned to <2.0.0 because ROS 2 Humble cv_bridge crashes with numpy 2.x
+# Note 2: transforms3d is installed via pip here to gracefully OVERRIDE the broken apt version.
+RUN pip3 install "numpy<2.0.0" ultralytics transforms3d
 
 # Necessary for puzzlebot_control/joystick_teleop node
 RUN apt-get update && apt-get install -y \
