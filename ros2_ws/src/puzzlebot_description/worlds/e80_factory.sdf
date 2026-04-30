@@ -2,18 +2,33 @@
 <sdf version="1.8">
   <world name="factory_world">
 
+     <!-- FAST PHYSICS CONFIGURATION -->
+    <physics name="fast_physics" type="ignored">
+      <max_step_size>0.005</max_step_size>                
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>200</real_time_update_rate>  
+    </physics>
+
+    <!-- ESSENTIAL PLUGINS -->
     <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics"/>
     <plugin filename="libignition-gazebo-user-commands-system.so" name="ignition::gazebo::systems::UserCommands"/>
     <plugin filename="libignition-gazebo-scene-broadcaster-system.so" name="ignition::gazebo::systems::SceneBroadcaster"/>
     <plugin filename="libignition-gazebo-contact-system.so" name="ignition::gazebo::systems::Contact"/>
 
+    <!-- OPTIMIZED SCENE & LIGHTING -->
+    <scene>
+      <shadows>false</shadows>
+      <grid>false</grid>                                  
+    </scene>
+
     <light type="directional" name="sun">
-      <cast_shadows>true</cast_shadows>
+      <cast_shadows>false</cast_shadows>                  
       <pose>0 0 10 0 0 0</pose>
       <diffuse>1 1 1 1</diffuse>
       <specular>0.5 0.5 0.5 1</specular>
     </light>
 
+    <!-- GROUND PLANE -->
     <model name="ground_plane">
       <static>true</static>
       <link name="link">
@@ -30,6 +45,7 @@
       </link>
     </model>
 
+    <!-- FACTORY WALLS -->
     <model name="factory_walls">
       <static>true</static>
 
@@ -120,6 +136,7 @@
 
     </model>
 
+    <!-- STORAGE RACKS -->
     <model name="storage_rack_1">
       <static>true</static>
       <pose>1.0 1.0 0.0 0 0 0</pose> 
@@ -248,6 +265,7 @@
       </link>
     </model>
 
+    <!-- CONVEYORS -->
     <model name="conveyor_1">
       <static>true</static>
       <pose>1.350 1.83 0.0 0 0 0</pose> 

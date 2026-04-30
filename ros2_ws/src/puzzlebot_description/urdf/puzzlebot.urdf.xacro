@@ -23,6 +23,7 @@
     <xacro:property name="blue_rgba"       value="0.0 0.5 1.0 1.0"/>
     <xacro:property name="dark_grey_rgba"  value="0.2 0.2 0.2 1.0"/>
 
+    <!-- BASE -->
     <link name="base_footprint"/>
 
     <link name="base_link">
@@ -34,7 +35,7 @@
                      izz="${base_i}"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="1.5708 0 1.5708"/>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
             <geometry>
                 <mesh filename="package://puzzlebot_description/meshes/chassis.stl"/>
             </geometry>
@@ -43,7 +44,7 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="1.5708 0 1.5708"/>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
             <geometry>
                 <mesh filename="package://puzzlebot_description/meshes/chassis.stl"/>
             </geometry>
@@ -56,6 +57,7 @@
         <origin xyz="0 0 0.05" rpy="0 0 0"/>
     </joint>
 
+    <!-- RIGHT WHEEL -->
     <link name="wheel_right_link">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -65,7 +67,7 @@
                      izz="${wheel_i}"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 -1.5708 1.5708"/>
+            <origin xyz="0 0 0" rpy="0 ${-pi/2} ${pi/2}"/>
             <geometry>
                 <mesh filename="package://puzzlebot_description/meshes/wheel.stl"/>
             </geometry>
@@ -88,6 +90,7 @@
         <origin xyz="${wheel_x} -${wheel_y} 0" rpy="0 0 0"/>
     </joint>
 
+    <!-- LEFT WHEEL -->
     <link name="wheel_left_link">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -97,7 +100,7 @@
                      izz="${wheel_i}"/>
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 1.5708 1.5708"/>
+            <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}"/>
             <geometry>
                 <mesh filename="package://puzzlebot_description/meshes/wheel.stl"/>
             </geometry>
@@ -120,6 +123,7 @@
         <origin xyz="${wheel_x} ${wheel_y} 0" rpy="0 0 0"/>
     </joint>
     
+    <!-- CASTER -->
     <link name="caster_link">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -142,9 +146,10 @@
         <origin xyz="${caster_x} 0 0.0081" rpy="0 0 0"/>
     </joint>
 
+    <!-- LASER -->
     <link name="laser_link">
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 3.14159"/>
+            <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
             <geometry>
                 <mesh filename="package://puzzlebot_description/meshes/laser_link.stl"/>
             </geometry>
@@ -152,23 +157,18 @@
                 <color rgba="${dark_grey_rgba}"/>
             </material>
         </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 3.14159"/>
-            <geometry>
-                <mesh filename="package://puzzlebot_description/meshes/laser_link.stl"/>
-            </geometry>
-        </collision>
     </link>
 
     <joint name="laser_joint" type="fixed">
         <parent link="base_link" />
         <child link="laser_link" />
-        <origin xyz="0.038 0.0 0.115" rpy="0 0 3.14159" />
+        <origin xyz="0.038 0.0 0.115" rpy="0 0 ${pi}" />
     </joint>
     
+    <!-- CAMERA -->
     <link name="camera_link">
         <visual>
-            <origin xyz="0 0 0" rpy="1.5708 0 1.5708"/>
+            <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
             <geometry>
                 <mesh filename="package://puzzlebot_description/meshes/camera.stl"/>
             </geometry>
@@ -184,12 +184,13 @@
         <origin xyz="0.1 0.0 0.05" rpy="0 0 0"/> 
     </joint>
 
+    <!-- CAMERA OPTICAL -->
     <link name="camera_optical_link"/>
     
     <joint name="camera_optical_joint" type="fixed">
         <parent link="camera_link"/>
         <child link="camera_optical_link"/>
-        <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
     </joint>
 
 </robot>
