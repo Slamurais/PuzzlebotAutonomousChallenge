@@ -32,9 +32,17 @@ def generate_launch_description():
         parameters=[{'use_sim_time': True}]
     )
 
+    ros_gz_image_bridge = Node(
+        package="ros_gz_image",
+        executable="image_bridge",
+        arguments=["/image_raw"],
+        parameters=[{'use_sim_time': True}]
+    )
+
     return LaunchDescription([
         gazebo_launch,
         simulation_controller_launch,
         joystick_teleop_launch,  
-        rviz_node
+        rviz_node,
+        ros_gz_image_bridge
     ])
