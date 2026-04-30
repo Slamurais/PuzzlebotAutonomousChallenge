@@ -44,31 +44,38 @@
         </plugin>
     </gazebo>
 
+    <!-- Datasheet: 
+    https://cdn.robotshop.com/media/r/rpk/rb-rpk-03/pdf/ld108_slamtec_rplidar_datasheet_a1m8_v3.0_en.pdf?_gl=1*69cea1*_gcl_au*MTg0MzU2MTI3Ni4xNzc3NTA5NzA1*_ga*MTk3OTA5Nzg3MS4xNzc3NTA5NzA1*_ga_FXHVC4EYRV*czE3Nzc1MDk3MDQkbzEkZzAkdDE3Nzc1MDk3MDQkajYwJGwwJGgw 
+    -->
+
     <gazebo reference="laser_link">
         <sensor name="lidar" type="gpu_lidar">
             <always_on>true</always_on>
             <visualize>true</visualize>
+            
+            <update_rate>5.5</update_rate> 
+            
             <topic>scan</topic>
-            <update_rate>5</update_rate>
-            <ignition_frame_id>laser_link</ignition_frame_id>
+            <gz_frame_id>laser_link</gz_frame_id> 
+            
             <lidar>
                 <scan>
                     <horizontal>
                         <samples>360</samples>
                         <resolution>1.0</resolution>
                         <min_angle>0.0</min_angle>
-                        <max_angle>6.28</max_angle>
+                        <max_angle>6.283185</max_angle> 
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.12</min>
-                    <max>12.0</max>
-                    <resolution>0.02</resolution>
+                    <min>0.15</min> 
+                    <max>12.0</max> 
+                    <resolution>0.001</resolution> 
                 </range>
                 <noise>
                     <type>gaussian</type>
                     <mean>0.0</mean>
-                    <stddev>0.01</stddev>
+                    <stddev>0.01</stddev> 
                 </noise>
             </lidar>
         </sensor>
@@ -98,7 +105,7 @@
                         <fy>277.1</fy> <!-- Focal length Y -->
                         <cx>320.5</cx> <!-- Principal point X -->
                         <cy>240.5</cy> <!-- Principal point Y -->
-                        <s>0</s>        <!-- Skew -->
+                        <s>0</s>       <!-- Skew -->
                     </intrinsics>
                 </lens>
                 
@@ -110,8 +117,7 @@
                     <p2>0.0</p2>
                     <center>0.5 0.5</center>
                 </distortion>
-                <!-- ============================================== -->
-                
+
             </camera>
             <topic>image_raw</topic>
             <gz_frame_id>camera_link_optical</gz_frame_id> 
