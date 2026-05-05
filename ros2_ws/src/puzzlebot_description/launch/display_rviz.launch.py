@@ -22,20 +22,20 @@ def generate_launch_description():
         value_type=str
     )
 
-    robot_state_publisher = Node(
+    robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         name='robot_state_publisher',
         parameters=[{'robot_description': robot_description, 'use_sim_time': False}]
     )
 
-    joint_state_publisher = Node(
+    joint_state_publisher_node = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
         name='joint_state_publisher'
     )
     
-    rviz2 = Node(
+    rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         name='rviz2',
@@ -44,7 +44,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         model_arg,
-        robot_state_publisher,
-        joint_state_publisher,
-        rviz2
+        robot_state_publisher_node,
+        joint_state_publisher_node,
+        rviz_node
     ])

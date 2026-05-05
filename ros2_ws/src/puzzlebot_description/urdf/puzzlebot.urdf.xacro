@@ -147,7 +147,7 @@
     </joint>
 
     <!-- LASER -->
-    <link name="laser_link">
+    <link name="laser">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
             <geometry>
@@ -161,7 +161,7 @@
 
     <joint name="laser_joint" type="fixed">
         <parent link="base_link" />
-        <child link="laser_link" />
+        <child link="laser" />
         <origin xyz="0.038 0.0 0.115" rpy="0 0 ${pi}" />
     </joint>
     

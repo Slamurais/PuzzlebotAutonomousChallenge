@@ -48,7 +48,7 @@
     https://cdn.robotshop.com/media/r/rpk/rb-rpk-03/pdf/ld108_slamtec_rplidar_datasheet_a1m8_v3.0_en.pdf?_gl=1*69cea1*_gcl_au*MTg0MzU2MTI3Ni4xNzc3NTA5NzA1*_ga*MTk3OTA5Nzg3MS4xNzc3NTA5NzA1*_ga_FXHVC4EYRV*czE3Nzc1MDk3MDQkbzEkZzAkdDE3Nzc1MDk3MDQkajYwJGwwJGgw 
     -->
 
-    <gazebo reference="laser_link">
+    <gazebo reference="laser">
         <sensor name="lidar" type="gpu_lidar">
             <always_on>true</always_on>
             <visualize>true</visualize>
@@ -56,7 +56,7 @@
             <update_rate>5.5</update_rate> 
             
             <topic>scan</topic>
-            <gz_frame_id>laser_link</gz_frame_id> 
+            <gz_frame_id>laser</gz_frame_id> 
             
             <lidar>
                 <scan>

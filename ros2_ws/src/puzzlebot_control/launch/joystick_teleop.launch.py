@@ -7,16 +7,15 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    puzzlebot_control_dir = get_package_share_directory('puzzlebot_control')
+    pkg_control = get_package_share_directory('puzzlebot_control')
 
-    # Default is False (Real-World time). Pass use_sim_time:=True for Gazebo.
     use_sim_time_arg = DeclareLaunchArgument(
         name='use_sim_time', 
         default_value='False',
         description='Use simulated time'
     )
 
-    config_file = os.path.join(puzzlebot_control_dir, 'config', 'joystick_teleop.yaml')
+    config_file = os.path.join(pkg_control, 'config', 'joystick_teleop.yaml')
 
     joy_node = Node(
         package='joy',

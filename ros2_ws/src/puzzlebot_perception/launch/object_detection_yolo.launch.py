@@ -21,14 +21,14 @@ def generate_launch_description():
         parameters=[shared_param_file]
     )
 
-    object_detection_yolo = Node(
+    object_detection_yolo_node = Node(
         package='puzzlebot_perception',
         executable='object_detection_yolo.py',
         name='object_detection_yolo',
         parameters=[shared_param_file]
     )
 
-    foxglove_bridge = Node(
+    foxglove_bridge_node = Node(
         package='foxglove_bridge',
         executable='foxglove_bridge',
         name='foxglove_bridge',
@@ -38,6 +38,6 @@ def generate_launch_description():
     return LaunchDescription([
         run_webcam_arg,
         v4l2_camera_node,
-        object_detection_yolo,
-        foxglove_bridge,
+        object_detection_yolo_node,
+        foxglove_bridge_node,
     ])

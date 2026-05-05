@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     ros-humble-xacro \
     ros-humble-robot-state-publisher \
     ros-humble-rviz2 \
+    ros-humble-twist-mux \
     && rm -rf /var/lib/apt/lists/*
 
 # Add the Gazebo (Ignition Fortress) repository key and source list
@@ -50,8 +51,9 @@ RUN apt-get update && apt-get install -y \
 
 # Necessary for puzzlebot_perception/object_detection_yolo node AND puzzlebot_control
 # Note 1: numpy is pinned to <2.0.0 because ROS 2 Humble cv_bridge crashes with numpy 2.x
-# Note 2: transforms3d is installed via pip here to gracefully OVERRIDE the broken apt version.
-RUN pip3 install "numpy<2.0.0" ultralytics transforms3d
+# Note 2: transforms3d is forced via pip to gracefully OVERRIDE the broken apt version.
+RUN pip3 install "numpy<2.0.0" ultralytics && \
+    pip3 install --upgrade --ignore-installed transforms3d
 
 # Necessary for puzzlebot_control/joystick_teleop node
 RUN apt-get update && apt-get install -y \

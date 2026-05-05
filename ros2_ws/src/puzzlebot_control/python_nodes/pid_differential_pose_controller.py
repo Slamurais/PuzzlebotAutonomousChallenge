@@ -44,7 +44,7 @@ class PIDDifferentialPoseController(Node):
         self.declare_parameter('goal_tolerance',      0.08)         # m
         self.declare_parameter('heading_tolerance',   0.09)         # rad
 
-        self.declare_parameter('min_linear_speed',    0.1)          # m/s
+        self.declare_parameter('min_linear_speed',    -0.17)        # m/s
         self.declare_parameter('max_linear_speed',    0.17)         # m/s
 
         self.declare_parameter('min_angular_speed',  -0.15)         # rad/s
@@ -91,7 +91,7 @@ class PIDDifferentialPoseController(Node):
         # 4. Publishers
         self.cmd_pub = self.create_publisher(
             Twist,
-            '/cmd_vel',
+            '/cmd_vel_pid',
             qos.QoSProfile(depth=10, reliability=qos.ReliabilityPolicy.RELIABLE)
         )
         
@@ -150,9 +150,7 @@ class PIDDifferentialPoseController(Node):
     
     def control_loop(self) -> None:
         """Main control loop running at update_rate; computes and publishes velocity commands."""
-        # If no goal is active, ensure robot is stopped
         if not self.goal_active:
-            self.cmd_pub.publish(Twist())
             return
 
         dt = 1.0 / self.update_rate
